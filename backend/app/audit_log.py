@@ -9,7 +9,7 @@ from .middleware import get_request_id
 from .models_audit import AuditLog
 
 
-def write_audit_log(
+def write_audit(
     db: Session,
     actor: str,
     action: str,
@@ -27,3 +27,7 @@ def write_audit_log(
     )
     db.add(log)
     db.commit()
+
+
+# Backward compatibility
+write_audit_log = write_audit
