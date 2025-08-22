@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     admin_email: str = Field(default="admin@example.com")
     admin_password: str = Field(default="admin")
 
+    # DB
+    db_dsn: str = Field(default="sqlite:///./local.db")
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:

@@ -12,3 +12,5 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 types-passlib==1.7.7.20250602
 types-python-jose==3.5.0.20250531
+SQLAlchemy==2.0.31
+alembic==1.13.2
