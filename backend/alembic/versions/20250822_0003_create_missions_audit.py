@@ -34,16 +34,14 @@ def upgrade() -> None:
         sa.Column("entity_id", sa.Integer(), nullable=True),
         sa.Column("payload", sa.Text(), nullable=True),
         sa.Column(
-            "created_at",
+            "ts",
             sa.DateTime(),
             nullable=False,
             server_default=sa.text("CURRENT_TIMESTAMP"),
         ),
     )
-    op.create_index("ix_audit_logs_request_id", "audit_logs", ["request_id"])
 
 
 def downgrade() -> None:
-    op.drop_index("ix_audit_logs_request_id", table_name="audit_logs")
     op.drop_table("audit_logs")
     op.drop_table("missions")
