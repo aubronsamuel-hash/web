@@ -13,9 +13,9 @@ describe("Intermittents page", () => {
   beforeEach(() => {
     const store: Record<string, string> = {};
     (global as any).localStorage = {
-      getItem: k => (k in store ? store[k] : null),
-      setItem: (k, v) => { store[k] = v; },
-      removeItem: k => { delete store[k]; },
+      getItem: (k: string) => (k in store ? store[k] : null),
+      setItem: (k: string, v: string) => { store[k] = v; },
+      removeItem: (k: string) => { delete store[k]; },
       clear: () => { for (const k in store) delete store[k]; }
     };
     localStorage.setItem("cc_token", "T");

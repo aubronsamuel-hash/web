@@ -18,6 +18,7 @@ export default function App() {
             <Link className="hover:underline" to="/">Dashboard</Link>
             <Link className="hover:underline" to="/users">Users</Link>
             <Link className="hover:underline" to="/intermittents">Intermittents</Link>
+            <Link className="hover:underline" to="/missions">Missions</Link>
             {authed && (
               <button className="ml-4 px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" onClick={() => { logout(); nav("/login"); }}>Se deconnecter</button>
             )}
