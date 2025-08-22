@@ -15,7 +15,7 @@ $Env:PYTHONPATH = "backend"
 
 Must 0 "python -m ruff check backend"
 Must 0 "python -m mypy backend"
-Must 0 "pytest -q --cov=backend -k 'healthz or auth or users'"
+Must 0 "pytest -q --cov=backend -k 'healthz or auth or users or intermittents'"
 
 Write-Host "[OK] Tests backend passes" -ForegroundColor Green
 exit 0
