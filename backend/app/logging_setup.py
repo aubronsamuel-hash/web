@@ -1,7 +1,7 @@
 import json
 import logging
 import logging.config
-from typing import Any, Dict
+from typing import Any
 
 from .settings import get_settings
 
@@ -17,7 +17,7 @@ class RequestIdFilter(logging.Filter):
 
 class JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
-        data: Dict[str, Any] = {
+        data: dict[str, Any] = {
             "ts": self.formatTime(record, datefmt="%Y-%m-%dT%H:%M:%S"),
             "level": record.levelname,
             "msg": record.getMessage(),

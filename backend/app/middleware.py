@@ -1,11 +1,10 @@
-import uuid
 import contextvars
+import uuid
 
 from starlette.types import ASGIApp, Receive, Scope, Send
 
-from .settings import get_settings
 from .logging_setup import REQUEST_ID_ATTR
-
+from .settings import get_settings
 
 _request_id_ctx: contextvars.ContextVar[str] = contextvars.ContextVar("request_id", default="-")
 
