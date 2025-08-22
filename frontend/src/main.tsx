@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Intermittents from "./pages/Intermittents";
+import Missions from "./pages/Missions";
+import MissionForm from "./pages/MissionForm";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -16,7 +18,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Dashboard /> },
       { path: "users", element: <Users /> },
-      { path: "intermittents", element: <Intermittents /> }
+      { path: "intermittents", element: <Intermittents /> },
+      { path: "missions", element: <Missions /> },
+      { path: "missions/new", element: <MissionForm /> },
+      { path: "missions/:id", element: <MissionForm /> }
     ]
   }
 ]);
