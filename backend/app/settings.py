@@ -1,6 +1,7 @@
 from functools import lru_cache
-from pydantic_settings import BaseSettings, SettingsConfigDict
+
 from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -10,6 +11,15 @@ class Settings(BaseSettings):
     log_level: str = Field(default="INFO")
     api_port: int = Field(default=8001)
     request_id_header: str = Field(default="X-Request-ID")
+
+    # JWT / Auth
+    jwt_secret: str = Field(default="change-me-in-local-env")
+    jwt_alg: str = Field(default="HS256")
+    jwt_exp_min: int = Field(default=60)
+
+    # Admin dev (no prod)
+    admin_email: str = Field(default="admin@example.com")
+    admin_password: str = Field(default="admin")
 
 
 @lru_cache(maxsize=1)

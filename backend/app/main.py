@@ -1,9 +1,10 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from .settings import get_settings
+from .auth import router as auth_router
 from .logging_setup import configure_logging, get_logger
 from .middleware import RequestIdMiddleware, get_request_id
+from .settings import get_settings
 
 configure_logging()
 log = get_logger("app")
@@ -19,10 +20,7 @@ def create_app() -> FastAPI:
         log.info("Healthz OK", extra={"path": str(request.url.path)})
         return JSONResponse({"status": "ok"}, headers={get_settings().request_id_header: rid})
 
-    @app.get("/_/env")
-    async def env_info():
-        s = get_settings()
-        return {"env": s.env, "app_name": s.app_name, "log_level": s.log_level}
+    app.include_router(auth_router)
 
     return app
 
