@@ -6,7 +6,7 @@ import App from "./App";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
-import { isAuthenticated } from "./lib/auth";
+import Intermittents from "./pages/Intermittents";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
@@ -15,16 +15,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "users", element: <Users /> }
+      { path: "users", element: <Users /> },
+      { path: "intermittents", element: <Intermittents /> }
     ]
   }
 ]);
 
-function GuardedRouter() {
-  const authed = isAuthenticated();
-  // Redirection simple cote pages elles-memes
-  return <RouterProvider router={router} />;
-}
-
 const root = createRoot(document.getElementById("root")!);
-root.render(<GuardedRouter />);
+root.render(<RouterProvider router={router} />);

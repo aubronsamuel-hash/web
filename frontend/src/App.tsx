@@ -7,11 +7,7 @@ export default function App() {
   const loc = useLocation();
   const authed = isAuthenticated();
 
-  React.useEffect(() => {
-    if (!authed) {
-      if (loc.pathname !== "/login") nav("/login");
-    }
-  }, [authed, loc.pathname, nav]);
+  React.useEffect(() => { if (!authed && loc.pathname !== "/login") nav("/login"); }, [authed, loc.pathname, nav]);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -21,11 +17,9 @@ export default function App() {
           <nav className="space-x-4">
             <Link className="hover:underline" to="/">Dashboard</Link>
             <Link className="hover:underline" to="/users">Users</Link>
+            <Link className="hover:underline" to="/intermittents">Intermittents</Link>
             {authed && (
-              <button
-                className="ml-4 px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
-                onClick={() => { logout(); nav("/login"); }}
-              >Se deconnecter</button>
+              <button className="ml-4 px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" onClick={() => { logout(); nav("/login"); }}>Se deconnecter</button>
             )}
           </nav>
         </div>
